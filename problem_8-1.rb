@@ -1,5 +1,6 @@
 # Find the greatest product of five consecutive digits in the 1000-digit number.
 # see DATA for number
+# => 40824
 
 s = DATA.read.gsub(/\n/,'')
 f = 5
