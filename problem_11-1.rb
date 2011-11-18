@@ -5,7 +5,7 @@
 
 require 'matrix'
 
-$m = Matrix[*DATA.read.each_line.map{ |l| l.split(/\s/).map{ |n| n.to_i }}]
+$m = Matrix[*DATA.read.each_line.map{ |l| l.split(/\s/).map(&:to_i)}]
 $x = 0
 
 # frame out each array into combinations of +n+
