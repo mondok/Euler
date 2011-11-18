@@ -15,29 +15,31 @@
 # 
 # => [837799, 525]
 
-def generate(n)
-  if (n & 1).zero?
-    n/2
-  else
-    (n*3) +1
-  end
-end
-
-def sequence_size(n)
-  s = 1
-  begin
-    n = generate(n)
-    s += 1
-  end until n == 1
-  s
-end
-
 max = [0,0]
+ceiling = 999_999
 
-999_999.downto(13) do |n|
-  s = sequence_size(n)
-  puts "#{n}: #{s}" if $DEBUG
-  max = [n,s] if s > max[1]
+$cache = {1 => 1}
+
+# generate and cache the start number + chain size
+def chain(n)
+  return $cache[n] if $cache.has_key?(n)
+  
+  if (n&1).zero?
+    $cache[n] = 1 + chain(n/2)
+  else
+    $cache[n] = 1 + chain(n+(n<<1)+1)
+  end 
+  
+  $cache[n]
 end
 
+# generate our cache hash
+1.upto(ceiling){ |n| chain(n) }
+
+# find the largest chain
+$cache.each do |k,v|
+  max = [k,v] if v > max[1]
+end
+
+# output result
 puts max.inspect
