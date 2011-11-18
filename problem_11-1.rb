@@ -33,8 +33,10 @@ end
 
 # cuts the array diagonally (fwd/bkwd) from the start point
 def diagonal(row=0, col=0, direction=:forward)
+  size = $m.row_size - 1
+
   if direction == :forward
-    ceil = 19-col
+    ceil = size-col
   else
     ceil = col
   end
