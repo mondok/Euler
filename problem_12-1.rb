@@ -19,6 +19,7 @@ require 'fiber'
 
 target = 500
 
+# generate tringle numbers
 triangle = Fiber.new do
   n = 1
   loop do
@@ -28,12 +29,14 @@ triangle = Fiber.new do
   end
 end
 
+# calculate prime factors
 def prime_factors(n)
   return [] if n == 1
   f = (2..n).detect{ |x| (n % x).zero? }
   [f] + prime_factors(n / f)
 end
 
+# calculate the number of factors
 def num_factors(n)
   pf = prime_factors(n)
   freq = Hash.new(0)
