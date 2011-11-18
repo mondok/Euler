@@ -4,11 +4,11 @@
 # => 70600674
 
 require 'matrix'
-require 'pp'
 
 $m = Matrix[*DATA.read.each_line.map{ |l| l.split(/\s/).map{ |n| n.to_i }}]
 $x = 0
 
+# frame out each array into combinations of +n+
 def framed(a, n = 4)
   runs = a.size - n + 1
   runs.times do |r|
@@ -16,12 +16,14 @@ def framed(a, n = 4)
   end
 end
 
+# frame out +a+ and calculate the max for each frame
 def max_frame(a)
   framed(a) do |f|
     max f
   end
 end
 
+# calculate the max of the frame
 def max(a)
   p = a.inject(1){ |t,n| t * n }
   if p > $x.to_i
@@ -29,6 +31,7 @@ def max(a)
   end
 end
 
+# cuts the array diagonally (fwd/bkwd) from the start point
 def diagonal(row=0, col=0, direction=:forward)
   if direction == :forward
     ceil = 19-col
@@ -51,6 +54,7 @@ def diagonal(row=0, col=0, direction=:forward)
   end
 end
 
+# hold our matrix slices
 slices = []
 
 # max from columns
@@ -73,7 +77,7 @@ n.times do |i|
 end
 
 # remove any that dont meet the minimum size
-slices.reject!{ |s| s.size < 4 }
+slices.uniq.reject!{ |s| s.size < 4 }
 
 # frame out each slice compute the product
 slices.each do |slice|
