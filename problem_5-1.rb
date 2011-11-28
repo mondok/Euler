@@ -3,13 +3,14 @@
 # => 232792560
 
 range = (1..20)
+incr = range.end
 
 n = 0
 found = false
 
 until found
-  n += range.end
+  n += incr
   found = range.all?{ |i| n % i == 0 }
 end
 
-puts "N: #{n}"
+puts n
