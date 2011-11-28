@@ -23,7 +23,7 @@ target = 500
 triangle = Fiber.new do
   n = 1
   loop do
-    t = n.downto(1).inject(:+)
+    t = n.downto(1).reduce(:+)
     Fiber.yield [n, t]
     n += 1
   end
