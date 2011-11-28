@@ -1,8 +1,8 @@
-#Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+# Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+# => 5537376230
 
 numbers = *DATA.read.split("\n").map(&:to_i)
-sum = numbers.inject(0){ |t,n| t + n }
-puts sum.to_s[0...10]
+puts numbers.reduce(&:+).to_s[0...10]
 
 __END__
 37107287533902102798797998220837590246510135740250
