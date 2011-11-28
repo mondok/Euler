@@ -8,8 +8,8 @@ range = (100..999)
 l = 0
 range.each do |a|
   range.each do |b|
-    p = (a * b).to_s
-    l = p.to_i if p.to_i > l && p == p.reverse
+    p = (a * b)
+    l = p if p > l && p.to_s == p.to_s.reverse
   end
 end
 
