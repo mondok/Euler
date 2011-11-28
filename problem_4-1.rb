@@ -5,12 +5,12 @@
 
 range = (100..999)
 
-pals = []
+l = 0
 range.each do |a|
   range.each do |b|
     p = (a * b).to_s
-    pals << p.to_i if p == p.reverse
+    l = p.to_i if p.to_i > l && p == p.reverse
   end
 end
 
-puts "Largest: %d" % pals.sort.uniq[-1]
+puts "Largest: %d" % l
