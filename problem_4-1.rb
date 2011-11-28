@@ -3,11 +3,12 @@
 # Find the largest palindrome made from the product of two 3-digit numbers.
 # => 906609
 
-range = (100..999)
+ub = 999
+lb = 100
 
 l = 0
-range.each do |a|
-  range.each do |b|
+ub.downto(lb) do |a|
+  ub.downto(lb) do |b|
     p = (a * b)
     l = p if p > l && p.to_s == p.to_s.reverse
   end
