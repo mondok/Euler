@@ -14,3 +14,5 @@ def bigPrime(big, little = 2)
 end
 
 puts bigPrime(600851475143)
+
+# 6857
